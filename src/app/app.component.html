@@ -1,0 +1,69 @@
+
+
+
+<div class="container-fluid">
+
+  <nav class="navbar navbar-light bg-faded rounded navbar-toggleable-md">
+      <button class="navbar-toggler navbar-toggler-right" type="button">_</button>
+        <a class="navbar-brand" href="somplace.html" >{{title}}</a>
+
+        <div class="collapse navbar-collapse" id="containerNavbar">
+          <ul class="navbar-nav mr-auto">
+            <li class="nav-item active">
+              <a class="nav-link" href="#">{{newsLetterName}}</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">Link</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link disabled" href="#">Disabled</a>
+            </li>
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" href="http://example.com" id="dropdown04" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Select NewsLetter</a>
+              <div class="dropdown-menu" aria-labelledby="dropdown04">
+                <letters (callLoadArticles)="testIt()"></letters>
+                <!--<a class="dropdown-item" href="#" (click)="update()">PetroAfricanus</a><!--newsletter.petroAfricanus, $event-->
+                <!---<a class="dropdown-item" href="#" (click)="actionLoad(22)">WorldWide</a>newsletter.worldwide, $event-->
+              </div>
+            </li>
+          </ul>
+          <form class="form-inline my-2 my-md-0">
+            <input class="form-control mr-sm-2" type="text" placeholder="Search">
+            <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+          </form>
+        </div>
+  </nav>
+
+
+  <div class="row"> 
+    <div class="alert alert-info" role="alert">
+      <strong>Heads up!</strong> {{newsletter.current.count}} articles Selecyted 
+    </div>
+  </div>  
+
+
+  <div class="row">
+    <div class="col-md-12">
+
+        <tabset>
+            <tab title="News" class="news">
+                <div class="list-group articles">
+                  <articles-list (sendToParent)='onSelectArticle($event)' class="articles" ></articles-list>
+                </div>
+            </tab>
+            <tab title="Review" class="review">
+                <div class="list-group articles">
+                  <selected-articles-list 
+                      
+                      [childSelectArticles]='parentSelectArticles' 
+                      (parentDecreaseTotal)='onRemoveArticle($event)' class="articles" ></selected-articles-list>
+                </div>
+            </tab>
+
+        </tabset>
+
+    </div>
+  </div>
+
+
+</div>
